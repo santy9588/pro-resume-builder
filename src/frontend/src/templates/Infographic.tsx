@@ -92,8 +92,8 @@ export default function Infographic({ data }: { data: ResumeData }) {
           {skills.length > 0 && (
             <>
               <IV title="Skills" color={orange} />
-              {skills.map((sk, i) => (
-                <div key={i} style={{ marginBottom: 10 }}>
+              {skills.map((sk) => (
+                <div key={sk.name} style={{ marginBottom: 10 }}>
                   <div
                     style={{
                       display: "flex",
@@ -132,9 +132,9 @@ export default function Infographic({ data }: { data: ResumeData }) {
           {languages.length > 0 && (
             <>
               <IV title="Languages" color={orange} />
-              {languages.map((l, i) => (
+              {languages.map((l) => (
                 <div
-                  key={i}
+                  key={l.name}
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
@@ -153,8 +153,11 @@ export default function Infographic({ data }: { data: ResumeData }) {
           {certifications.length > 0 && (
             <>
               <IV title="Certifications" color={orange} />
-              {certifications.map((c, i) => (
-                <div key={i} style={{ marginBottom: 8 }}>
+              {certifications.map((c) => (
+                <div
+                  key={`${c.name}-${c.organization}`}
+                  style={{ marginBottom: 8 }}
+                >
                   <div style={{ fontSize: 11, fontWeight: 600 }}>{c.name}</div>
                   <div style={{ fontSize: 10, color: "#78716C" }}>
                     {c.organization} · {c.date}
@@ -183,9 +186,9 @@ export default function Infographic({ data }: { data: ResumeData }) {
           {workExperience.length > 0 && (
             <>
               <IV title="Experience" color={orange} />
-              {workExperience.map((w, i) => (
+              {workExperience.map((w) => (
                 <div
-                  key={i}
+                  key={`${w.jobTitle}-${w.company}`}
                   style={{ marginBottom: 16, display: "flex", gap: 12 }}
                 >
                   <div
@@ -226,9 +229,9 @@ export default function Infographic({ data }: { data: ResumeData }) {
           {education.length > 0 && (
             <>
               <IV title="Education" color={orange} />
-              {education.map((e, i) => (
+              {education.map((e) => (
                 <div
-                  key={i}
+                  key={`${e.institution}-${e.degree}`}
                   style={{
                     marginBottom: 10,
                     background: "#FFF7ED",
@@ -252,8 +255,8 @@ export default function Infographic({ data }: { data: ResumeData }) {
           {projects.length > 0 && (
             <>
               <IV title="Projects" color={orange} />
-              {projects.map((pr, i) => (
-                <div key={i} style={{ marginBottom: 10 }}>
+              {projects.map((pr) => (
+                <div key={pr.name} style={{ marginBottom: 10 }}>
                   <div style={{ fontWeight: 700, fontSize: 12, color: orange }}>
                     {pr.name}
                   </div>

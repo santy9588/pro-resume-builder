@@ -82,9 +82,9 @@ export default function MilitaryGovernment({ data }: { data: ResumeData }) {
       {workExperience.length > 0 && (
         <>
           <SH>Service / Employment History</SH>
-          {workExperience.map((w, i) => (
+          {workExperience.map((w) => (
             <div
-              key={i}
+              key={`${w.jobTitle}-${w.company}`}
               style={{
                 marginBottom: 16,
                 borderLeft: `4px solid ${OLIVE}`,
@@ -142,9 +142,9 @@ export default function MilitaryGovernment({ data }: { data: ResumeData }) {
       {education.length > 0 && (
         <>
           <SH>Education &amp; Training</SH>
-          {education.map((e, i) => (
+          {education.map((e) => (
             <div
-              key={i}
+              key={`${e.institution}-${e.degree}`}
               style={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -192,7 +192,10 @@ export default function MilitaryGovernment({ data }: { data: ResumeData }) {
             >
               <tbody>
                 {skills.map((sk, i) => (
-                  <tr key={i} style={{ borderBottom: "1px solid #E5E7EB" }}>
+                  <tr
+                    key={sk.name}
+                    style={{ borderBottom: "1px solid #E5E7EB" }}
+                  >
                     <td
                       style={{
                         padding: "4px 0",
@@ -220,9 +223,9 @@ export default function MilitaryGovernment({ data }: { data: ResumeData }) {
           {certifications.length > 0 && (
             <>
               <SH>Certifications &amp; Clearances</SH>
-              {certifications.map((c, i) => (
+              {certifications.map((c) => (
                 <div
-                  key={i}
+                  key={`${c.name}-${c.organization}`}
                   style={{
                     marginBottom: 8,
                     padding: "4px 8px",
@@ -241,8 +244,8 @@ export default function MilitaryGovernment({ data }: { data: ResumeData }) {
           {languages.length > 0 && (
             <>
               <SH>Foreign Language Proficiency</SH>
-              {languages.map((l, i) => (
-                <div key={i} style={{ fontSize: 12, marginBottom: 4 }}>
+              {languages.map((l) => (
+                <div key={l.name} style={{ fontSize: 12, marginBottom: 4 }}>
                   {l.name}: <strong>{l.proficiency}</strong>
                 </div>
               ))}

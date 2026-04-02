@@ -86,8 +86,11 @@ export default function BoldModern({ data }: { data: ResumeData }) {
           {workExperience.length > 0 && (
             <>
               <SH red={red}>Experience</SH>
-              {workExperience.map((w, i) => (
-                <div key={i} style={{ marginBottom: 20 }}>
+              {workExperience.map((w) => (
+                <div
+                  key={`${w.jobTitle}-${w.company}`}
+                  style={{ marginBottom: 20 }}
+                >
                   <div style={{ fontWeight: 900, fontSize: 16, color: "#111" }}>
                     {w.jobTitle}
                   </div>
@@ -120,8 +123,8 @@ export default function BoldModern({ data }: { data: ResumeData }) {
           {projects.length > 0 && (
             <>
               <SH red={red}>Projects</SH>
-              {projects.map((pr, i) => (
-                <div key={i} style={{ marginBottom: 14 }}>
+              {projects.map((pr) => (
+                <div key={pr.name} style={{ marginBottom: 14 }}>
                   <div style={{ fontWeight: 800, fontSize: 13 }}>{pr.name}</div>
                   <p style={{ fontSize: 12, color: "#555", lineHeight: 1.6 }}>
                     {pr.description}
@@ -137,8 +140,11 @@ export default function BoldModern({ data }: { data: ResumeData }) {
           {education.length > 0 && (
             <>
               <SH red={red}>Education</SH>
-              {education.map((e, i) => (
-                <div key={i} style={{ marginBottom: 14 }}>
+              {education.map((e) => (
+                <div
+                  key={`${e.institution}-${e.degree}`}
+                  style={{ marginBottom: 14 }}
+                >
                   <div style={{ fontWeight: 700, fontSize: 13 }}>
                     {e.degree}
                   </div>
@@ -158,8 +164,8 @@ export default function BoldModern({ data }: { data: ResumeData }) {
           {skills.length > 0 && (
             <>
               <SH red={red}>Skills</SH>
-              {skills.map((sk, i) => (
-                <div key={i} style={{ marginBottom: 8 }}>
+              {skills.map((sk) => (
+                <div key={sk.name} style={{ marginBottom: 8 }}>
                   <div style={{ fontSize: 12, fontWeight: 700 }}>{sk.name}</div>
                   <div
                     style={{
@@ -184,8 +190,8 @@ export default function BoldModern({ data }: { data: ResumeData }) {
           {languages.length > 0 && (
             <>
               <SH red={red}>Languages</SH>
-              {languages.map((l, i) => (
-                <div key={i} style={{ fontSize: 12, marginBottom: 4 }}>
+              {languages.map((l) => (
+                <div key={l.name} style={{ fontSize: 12, marginBottom: 4 }}>
                   {l.name}{" "}
                   <span style={{ color: "#999" }}>({l.proficiency})</span>
                 </div>
@@ -195,8 +201,11 @@ export default function BoldModern({ data }: { data: ResumeData }) {
           {certifications.length > 0 && (
             <>
               <SH red={red}>Certifications</SH>
-              {certifications.map((c, i) => (
-                <div key={i} style={{ fontSize: 11, marginBottom: 6 }}>
+              {certifications.map((c) => (
+                <div
+                  key={`${c.name}-${c.organization}`}
+                  style={{ fontSize: 11, marginBottom: 6 }}
+                >
                   <div style={{ fontWeight: 600 }}>{c.name}</div>
                   <div style={{ color: "#777" }}>{c.organization}</div>
                 </div>

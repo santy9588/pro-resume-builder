@@ -348,6 +348,7 @@ function ExperienceForm({
     <div>
       {data.workExperience.map((w, i) => (
         <div
+          // biome-ignore lint/suspicious/noArrayIndexKey: form items are index-addressed
           key={i}
           className="mb-4 p-3 border border-border rounded-lg"
           data-ocid={`builder.item.${i + 1}`}
@@ -460,6 +461,7 @@ function EducationForm({
     <div>
       {data.education.map((e, i) => (
         <div
+          // biome-ignore lint/suspicious/noArrayIndexKey: form items are index-addressed
           key={i}
           className="mb-4 p-3 border border-border rounded-lg"
           data-ocid={`builder.item.${i + 1}`}
@@ -568,6 +570,7 @@ function SkillsForm({
     <div>
       {data.skills.map((sk, i) => (
         <div
+          // biome-ignore lint/suspicious/noArrayIndexKey: form items are index-addressed
           key={i}
           className="flex items-center gap-2 mb-2"
           data-ocid={`builder.item.${i + 1}`}
@@ -655,6 +658,7 @@ function ProjectsForm({
     <div>
       {data.projects.map((pr, i) => (
         <div
+          // biome-ignore lint/suspicious/noArrayIndexKey: form items are index-addressed
           key={i}
           className="mb-4 p-3 border border-border rounded-lg"
           data-ocid={`builder.item.${i + 1}`}
@@ -768,6 +772,7 @@ function CertsForm({
     <div>
       {data.certifications.map((c, i) => (
         <div
+          // biome-ignore lint/suspicious/noArrayIndexKey: form items are index-addressed
           key={i}
           className="mb-4 p-3 border border-border rounded-lg"
           data-ocid={`builder.item.${i + 1}`}
@@ -850,6 +855,7 @@ function LangForm({
     <div>
       {data.languages.map((l, i) => (
         <div
+          // biome-ignore lint/suspicious/noArrayIndexKey: form items are index-addressed
           key={i}
           className="flex items-center gap-2 mb-2"
           data-ocid={`builder.item.${i + 1}`}

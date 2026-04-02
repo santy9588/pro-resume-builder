@@ -53,8 +53,11 @@ export default function ATSFriendly({ data }: { data: ResumeData }) {
       {workExperience.length > 0 && (
         <>
           <SH>WORK EXPERIENCE</SH>
-          {workExperience.map((w, i) => (
-            <div key={i} style={{ marginBottom: 14 }}>
+          {workExperience.map((w) => (
+            <div
+              key={`${w.jobTitle}-${w.company}`}
+              style={{ marginBottom: 14 }}
+            >
               <div style={{ fontSize: 13, fontWeight: 700 }}>
                 {w.jobTitle} — {w.company}
               </div>
@@ -71,8 +74,11 @@ export default function ATSFriendly({ data }: { data: ResumeData }) {
       {education.length > 0 && (
         <>
           <SH>EDUCATION</SH>
-          {education.map((e, i) => (
-            <div key={i} style={{ marginBottom: 10 }}>
+          {education.map((e) => (
+            <div
+              key={`${e.institution}-${e.degree}`}
+              style={{ marginBottom: 10 }}
+            >
               <div style={{ fontSize: 13, fontWeight: 700 }}>
                 {e.degree} in {e.fieldOfStudy}
               </div>
@@ -96,8 +102,11 @@ export default function ATSFriendly({ data }: { data: ResumeData }) {
       {certifications.length > 0 && (
         <>
           <SH>CERTIFICATIONS</SH>
-          {certifications.map((c, i) => (
-            <div key={i} style={{ fontSize: 12, marginBottom: 4 }}>
+          {certifications.map((c) => (
+            <div
+              key={`${c.name}-${c.organization}`}
+              style={{ fontSize: 12, marginBottom: 4 }}
+            >
               {c.name} | {c.organization} | {c.date}
             </div>
           ))}
@@ -106,8 +115,8 @@ export default function ATSFriendly({ data }: { data: ResumeData }) {
       {projects.length > 0 && (
         <>
           <SH>PROJECTS</SH>
-          {projects.map((pr, i) => (
-            <div key={i} style={{ marginBottom: 10 }}>
+          {projects.map((pr) => (
+            <div key={pr.name} style={{ marginBottom: 10 }}>
               <div style={{ fontSize: 13, fontWeight: 700 }}>{pr.name}</div>
               {pr.technologies.length > 0 && (
                 <div style={{ fontSize: 11, marginBottom: 2 }}>

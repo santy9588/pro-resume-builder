@@ -26,20 +26,11 @@
         "noUnusedVariables": "error"
       },
       "suspicious": {
-        "noExplicitAny": "off",
-        "noArrayIndexKey": "off",
-        "noCommentText": "off"
+        "noExplicitAny": "off"
       },
       "style": {
         "useConst": "off",
-        "noNonNullAssertion": "off",
-        "useTemplate": "off"
-      },
-      "complexity": {
-        "noUselessFragments": "off"
-      },
-      "a11y": {
-        "useValidAnchor": "off"
+        "noNonNullAssertion": "off"
       }
     }
   },

@@ -64,8 +64,8 @@ export default function ModernBlue({ data }: { data: ResumeData }) {
         >
           {skills.length > 0 && (
             <Section title="Skills" color={blue}>
-              {skills.map((sk, i) => (
-                <div key={i} style={{ marginBottom: 8 }}>
+              {skills.map((sk) => (
+                <div key={sk.name} style={{ marginBottom: 8 }}>
                   <div
                     style={{
                       fontSize: 11,
@@ -94,9 +94,9 @@ export default function ModernBlue({ data }: { data: ResumeData }) {
           )}
           {languages.length > 0 && (
             <Section title="Languages" color={blue}>
-              {languages.map((l, i) => (
+              {languages.map((l) => (
                 <div
-                  key={i}
+                  key={l.name}
                   style={{ fontSize: 12, color: "#555", marginBottom: 4 }}
                 >
                   {l.name}{" "}
@@ -107,9 +107,9 @@ export default function ModernBlue({ data }: { data: ResumeData }) {
           )}
           {certifications.length > 0 && (
             <Section title="Certifications" color={blue}>
-              {certifications.map((c, i) => (
+              {certifications.map((c) => (
                 <div
-                  key={i}
+                  key={`${c.name}-${c.organization}`}
                   style={{ fontSize: 11, color: "#555", marginBottom: 8 }}
                 >
                   <div style={{ fontWeight: 600, color: "#333" }}>{c.name}</div>
@@ -131,8 +131,11 @@ export default function ModernBlue({ data }: { data: ResumeData }) {
           )}
           {workExperience.length > 0 && (
             <Section title="Experience" color={blue}>
-              {workExperience.map((w, i) => (
-                <div key={i} style={{ marginBottom: 16 }}>
+              {workExperience.map((w) => (
+                <div
+                  key={`${w.jobTitle}-${w.company}`}
+                  style={{ marginBottom: 16 }}
+                >
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
@@ -155,8 +158,11 @@ export default function ModernBlue({ data }: { data: ResumeData }) {
           )}
           {education.length > 0 && (
             <Section title="Education" color={blue}>
-              {education.map((e, i) => (
-                <div key={i} style={{ marginBottom: 12 }}>
+              {education.map((e) => (
+                <div
+                  key={`${e.institution}-${e.degree}`}
+                  style={{ marginBottom: 12 }}
+                >
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
@@ -177,8 +183,8 @@ export default function ModernBlue({ data }: { data: ResumeData }) {
           )}
           {projects.length > 0 && (
             <Section title="Projects" color={blue}>
-              {projects.map((pr, i) => (
-                <div key={i} style={{ marginBottom: 12 }}>
+              {projects.map((pr) => (
+                <div key={pr.name} style={{ marginBottom: 12 }}>
                   <div style={{ fontWeight: 700, fontSize: 13 }}>{pr.name}</div>
                   {pr.technologies.length > 0 && (
                     <div
@@ -189,12 +195,12 @@ export default function ModernBlue({ data }: { data: ResumeData }) {
                         margin: "4px 0",
                       }}
                     >
-                      {pr.technologies.map((t, j) => (
+                      {pr.technologies.map((t) => (
                         <span
-                          key={j}
+                          key={t}
                           style={{
                             fontSize: 10,
-                            background: blue + "18",
+                            background: `${blue}18`,
                             color: blue,
                             borderRadius: 3,
                             padding: "1px 6px",

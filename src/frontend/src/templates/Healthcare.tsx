@@ -82,9 +82,9 @@ export default function Healthcare({ data }: { data: ResumeData }) {
           )}
           {workExperience.length > 0 && (
             <Sec title="Clinical Experience" color={teal}>
-              {workExperience.map((w, i) => (
+              {workExperience.map((w) => (
                 <div
-                  key={i}
+                  key={`${w.jobTitle}-${w.company}`}
                   style={{
                     marginBottom: 16,
                     paddingLeft: 12,
@@ -113,9 +113,9 @@ export default function Healthcare({ data }: { data: ResumeData }) {
           )}
           {certifications.length > 0 && (
             <Sec title="Licenses & Certifications" color={teal}>
-              {certifications.map((c, i) => (
+              {certifications.map((c) => (
                 <div
-                  key={i}
+                  key={`${c.name}-${c.organization}`}
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
@@ -146,8 +146,11 @@ export default function Healthcare({ data }: { data: ResumeData }) {
         <div style={{ width: 220, background: light, padding: "24px 20px" }}>
           {education.length > 0 && (
             <Sec title="Education" color={teal}>
-              {education.map((e, i) => (
-                <div key={i} style={{ marginBottom: 12 }}>
+              {education.map((e) => (
+                <div
+                  key={`${e.institution}-${e.degree}`}
+                  style={{ marginBottom: 12 }}
+                >
                   <div style={{ fontSize: 12, fontWeight: 700 }}>
                     {e.degree}
                   </div>
@@ -166,9 +169,9 @@ export default function Healthcare({ data }: { data: ResumeData }) {
           )}
           {skills.length > 0 && (
             <Sec title="Clinical Skills" color={teal}>
-              {skills.map((sk, i) => (
+              {skills.map((sk) => (
                 <div
-                  key={i}
+                  key={sk.name}
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
@@ -188,9 +191,9 @@ export default function Healthcare({ data }: { data: ResumeData }) {
           )}
           {languages.length > 0 && (
             <Sec title="Languages" color={teal}>
-              {languages.map((l, i) => (
+              {languages.map((l) => (
                 <div
-                  key={i}
+                  key={l.name}
                   style={{ fontSize: 11, color: "#4B5563", marginBottom: 4 }}
                 >
                   {l.name}{" "}

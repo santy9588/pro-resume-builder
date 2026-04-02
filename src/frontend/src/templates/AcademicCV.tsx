@@ -72,8 +72,11 @@ export default function AcademicCV({ data }: { data: ResumeData }) {
       {education.length > 0 && (
         <>
           <AH>Education</AH>
-          {education.map((e, i) => (
-            <div key={i} style={{ marginBottom: 14 }}>
+          {education.map((e) => (
+            <div
+              key={`${e.institution}-${e.degree}`}
+              style={{ marginBottom: 14 }}
+            >
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div style={{ fontWeight: 700, fontSize: 13 }}>
                   {e.degree} in {e.fieldOfStudy}
@@ -97,8 +100,11 @@ export default function AcademicCV({ data }: { data: ResumeData }) {
       {workExperience.length > 0 && (
         <>
           <AH>Academic & Professional Experience</AH>
-          {workExperience.map((w, i) => (
-            <div key={i} style={{ marginBottom: 18 }}>
+          {workExperience.map((w) => (
+            <div
+              key={`${w.jobTitle}-${w.company}`}
+              style={{ marginBottom: 18 }}
+            >
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div style={{ fontWeight: 700, fontSize: 13 }}>
                   {w.jobTitle}
@@ -127,8 +133,8 @@ export default function AcademicCV({ data }: { data: ResumeData }) {
       {projects.length > 0 && (
         <>
           <AH>Research Projects & Publications</AH>
-          {projects.map((pr, i) => (
-            <div key={i} style={{ marginBottom: 14 }}>
+          {projects.map((pr) => (
+            <div key={pr.name} style={{ marginBottom: 14 }}>
               <div style={{ fontWeight: 700, fontSize: 13 }}>{pr.name}</div>
               {pr.technologies.length > 0 && (
                 <div
@@ -150,9 +156,9 @@ export default function AcademicCV({ data }: { data: ResumeData }) {
       {certifications.length > 0 && (
         <>
           <AH>Awards & Honors</AH>
-          {certifications.map((c, i) => (
+          {certifications.map((c) => (
             <div
-              key={i}
+              key={`${c.name}-${c.organization}`}
               style={{ fontSize: 12, color: "#333", marginBottom: 6 }}
             >
               <strong>{c.name}</strong>, {c.organization}, {c.date}
@@ -172,8 +178,8 @@ export default function AcademicCV({ data }: { data: ResumeData }) {
         {languages.length > 0 && (
           <div style={{ flex: 1 }}>
             <AH>Languages</AH>
-            {languages.map((l, i) => (
-              <div key={i} style={{ fontSize: 12, color: "#333" }}>
+            {languages.map((l) => (
+              <div key={l.name} style={{ fontSize: 12, color: "#333" }}>
                 {l.name}: {l.proficiency}
               </div>
             ))}

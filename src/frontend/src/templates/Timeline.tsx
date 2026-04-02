@@ -30,11 +30,6 @@ export default function Timeline({ data }: { data: ResumeData }) {
           {name}
         </div>
         <div
-          style={{ fontSize: 13, color: purple, fontWeight: 600, marginTop: 4 }}
-        >
-          Senior Software Engineer
-        </div>
-        <div
           style={{
             display: "flex",
             gap: 18,
@@ -71,9 +66,9 @@ export default function Timeline({ data }: { data: ResumeData }) {
           {workExperience.length > 0 && (
             <>
               <SH color={purple}>Experience</SH>
-              {workExperience.map((w, i) => (
+              {workExperience.map((w) => (
                 <TLItem
-                  key={i}
+                  key={`${w.jobTitle}-${w.company}`}
                   color={purple}
                   date={`${w.startDate} – ${w.endDate}`}
                 >
@@ -100,9 +95,9 @@ export default function Timeline({ data }: { data: ResumeData }) {
           {education.length > 0 && (
             <>
               <SH color={purple}>Education</SH>
-              {education.map((e, i) => (
+              {education.map((e) => (
                 <TLItem
-                  key={i}
+                  key={`${e.institution}-${e.degree}`}
                   color={purple}
                   date={`${e.startDate} – ${e.endDate}`}
                 >
@@ -126,8 +121,8 @@ export default function Timeline({ data }: { data: ResumeData }) {
           {skills.length > 0 && (
             <>
               <SH color={purple}>Skills</SH>
-              {skills.map((sk, i) => (
-                <div key={i} style={{ marginBottom: 8 }}>
+              {skills.map((sk) => (
+                <div key={sk.name} style={{ marginBottom: 8 }}>
                   <div style={{ fontSize: 12, fontWeight: 600 }}>{sk.name}</div>
                   <div
                     style={{
@@ -152,9 +147,9 @@ export default function Timeline({ data }: { data: ResumeData }) {
           {languages.length > 0 && (
             <>
               <SH color={purple}>Languages</SH>
-              {languages.map((l, i) => (
+              {languages.map((l) => (
                 <div
-                  key={i}
+                  key={l.name}
                   style={{ fontSize: 12, color: "#4B5563", marginBottom: 4 }}
                 >
                   {l.name} – <em>{l.proficiency}</em>
@@ -165,9 +160,9 @@ export default function Timeline({ data }: { data: ResumeData }) {
           {certifications.length > 0 && (
             <>
               <SH color={purple}>Certifications</SH>
-              {certifications.map((c, i) => (
+              {certifications.map((c) => (
                 <div
-                  key={i}
+                  key={`${c.name}-${c.organization}`}
                   style={{ fontSize: 11, color: "#4B5563", marginBottom: 6 }}
                 >
                   <div style={{ fontWeight: 600 }}>{c.name}</div>

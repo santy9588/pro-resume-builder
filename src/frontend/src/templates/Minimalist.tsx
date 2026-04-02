@@ -51,8 +51,11 @@ export default function Minimalist({ data }: { data: ResumeData }) {
         <>
           <div style={{ ...parseStyle(s.sectionTitle) }}>Experience</div>
           <hr style={{ ...parseStyle(s.divider) }} />
-          {workExperience.map((w, i) => (
-            <div key={i} style={{ marginBottom: "18px" }}>
+          {workExperience.map((w) => (
+            <div
+              key={`${w.jobTitle}-${w.company}`}
+              style={{ marginBottom: "18px" }}
+            >
               <div
                 style={{
                   display: "flex",
@@ -79,8 +82,11 @@ export default function Minimalist({ data }: { data: ResumeData }) {
         <>
           <div style={{ ...parseStyle(s.sectionTitle) }}>Education</div>
           <hr style={{ ...parseStyle(s.divider) }} />
-          {education.map((e, i) => (
-            <div key={i} style={{ marginBottom: "14px" }}>
+          {education.map((e) => (
+            <div
+              key={`${e.institution}-${e.degree}`}
+              style={{ marginBottom: "14px" }}
+            >
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div>
                   <div style={{ ...parseStyle(s.jobTitle) }}>
@@ -103,8 +109,8 @@ export default function Minimalist({ data }: { data: ResumeData }) {
           <div style={{ ...parseStyle(s.sectionTitle) }}>Skills</div>
           <hr style={{ ...parseStyle(s.divider) }} />
           <div>
-            {skills.map((sk, i) => (
-              <span key={i} style={{ ...parseStyle(s.skillTag) }}>
+            {skills.map((sk) => (
+              <span key={sk.name} style={{ ...parseStyle(s.skillTag) }}>
                 {sk.name}
               </span>
             ))}
@@ -115,8 +121,8 @@ export default function Minimalist({ data }: { data: ResumeData }) {
         <>
           <div style={{ ...parseStyle(s.sectionTitle) }}>Projects</div>
           <hr style={{ ...parseStyle(s.divider) }} />
-          {projects.map((pr, i) => (
-            <div key={i} style={{ marginBottom: "12px" }}>
+          {projects.map((pr) => (
+            <div key={pr.name} style={{ marginBottom: "12px" }}>
               <div style={{ ...parseStyle(s.jobTitle) }}>{pr.name}</div>
               <p style={{ ...parseStyle(s.desc) }}>{pr.description}</p>
             </div>
@@ -127,8 +133,11 @@ export default function Minimalist({ data }: { data: ResumeData }) {
         <>
           <div style={{ ...parseStyle(s.sectionTitle) }}>Certifications</div>
           <hr style={{ ...parseStyle(s.divider) }} />
-          {certifications.map((c, i) => (
-            <div key={i} style={{ ...parseStyle(s.desc), marginBottom: "8px" }}>
+          {certifications.map((c) => (
+            <div
+              key={`${c.name}-${c.organization}`}
+              style={{ ...parseStyle(s.desc), marginBottom: "8px" }}
+            >
               <strong>{c.name}</strong> — {c.organization}, {c.date}
             </div>
           ))}
@@ -139,8 +148,8 @@ export default function Minimalist({ data }: { data: ResumeData }) {
           <div style={{ ...parseStyle(s.sectionTitle) }}>Languages</div>
           <hr style={{ ...parseStyle(s.divider) }} />
           <div style={{ display: "flex", gap: "24px" }}>
-            {languages.map((l, i) => (
-              <span key={i} style={{ ...parseStyle(s.desc) }}>
+            {languages.map((l) => (
+              <span key={l.name} style={{ ...parseStyle(s.desc) }}>
                 {l.name} <em>({l.proficiency})</em>
               </span>
             ))}

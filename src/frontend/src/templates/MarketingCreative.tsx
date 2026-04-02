@@ -107,8 +107,11 @@ export default function MarketingCreative({ data }: { data: ResumeData }) {
           {workExperience.length > 0 && (
             <>
               <SH color={pink}>Experience</SH>
-              {workExperience.map((w, i) => (
-                <div key={i} style={{ marginBottom: 18 }}>
+              {workExperience.map((w) => (
+                <div
+                  key={`${w.jobTitle}-${w.company}`}
+                  style={{ marginBottom: 18 }}
+                >
                   <div
                     style={{ display: "flex", alignItems: "baseline", gap: 8 }}
                   >
@@ -118,7 +121,7 @@ export default function MarketingCreative({ data }: { data: ResumeData }) {
                     <div
                       style={{
                         fontSize: 10,
-                        background: pink + "22",
+                        background: `${pink}22`,
                         color: pink,
                         borderRadius: 10,
                         padding: "1px 8px",
@@ -147,9 +150,9 @@ export default function MarketingCreative({ data }: { data: ResumeData }) {
           {projects.length > 0 && (
             <>
               <SH color={pink}>Campaigns & Projects</SH>
-              {projects.map((pr, i) => (
+              {projects.map((pr) => (
                 <div
-                  key={i}
+                  key={pr.name}
                   style={{
                     marginBottom: 12,
                     padding: "10px 14px",
@@ -174,8 +177,11 @@ export default function MarketingCreative({ data }: { data: ResumeData }) {
           {education.length > 0 && (
             <>
               <SH color={pink}>Education</SH>
-              {education.map((e, i) => (
-                <div key={i} style={{ marginBottom: 12 }}>
+              {education.map((e) => (
+                <div
+                  key={`${e.institution}-${e.degree}`}
+                  style={{ marginBottom: 12 }}
+                >
                   <div style={{ fontSize: 12, fontWeight: 700 }}>
                     {e.degree}
                   </div>
@@ -196,7 +202,7 @@ export default function MarketingCreative({ data }: { data: ResumeData }) {
               <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
                 {skills.map((sk, i) => (
                   <span
-                    key={i}
+                    key={sk.name}
                     style={{
                       fontSize: 10,
                       background: i % 2 === 0 ? pink : yellow,
@@ -216,9 +222,9 @@ export default function MarketingCreative({ data }: { data: ResumeData }) {
               <SH color={pink} style={{ marginTop: 16 }}>
                 Certifications
               </SH>
-              {certifications.map((c, i) => (
+              {certifications.map((c) => (
                 <div
-                  key={i}
+                  key={`${c.name}-${c.organization}`}
                   style={{ fontSize: 10, color: "#555", marginBottom: 6 }}
                 >
                   <div style={{ fontWeight: 600, color: "#333" }}>{c.name}</div>
@@ -230,9 +236,9 @@ export default function MarketingCreative({ data }: { data: ResumeData }) {
           {languages.length > 0 && (
             <>
               <SH color={pink}>Languages</SH>
-              {languages.map((l, i) => (
+              {languages.map((l) => (
                 <div
-                  key={i}
+                  key={l.name}
                   style={{ fontSize: 11, color: "#555", marginBottom: 4 }}
                 >
                   {l.name} — {l.proficiency}

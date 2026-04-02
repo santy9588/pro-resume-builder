@@ -41,18 +41,19 @@ export default function TwoColumn({ data }: { data: ResumeData }) {
           }}
         >
           {summary && (
-            <>
-              <Sec title="Summary" color={accent}>
-                <p style={{ fontSize: 12, lineHeight: 1.7, color: "#475569" }}>
-                  {summary}
-                </p>
-              </Sec>
-            </>
+            <Sec title="Summary" color={accent}>
+              <p style={{ fontSize: 12, lineHeight: 1.7, color: "#475569" }}>
+                {summary}
+              </p>
+            </Sec>
           )}
           {workExperience.length > 0 && (
             <Sec title="Experience" color={accent}>
-              {workExperience.map((w, i) => (
-                <div key={i} style={{ marginBottom: 14 }}>
+              {workExperience.map((w) => (
+                <div
+                  key={`${w.jobTitle}-${w.company}`}
+                  style={{ marginBottom: 14 }}
+                >
                   <div style={{ fontWeight: 700, fontSize: 13 }}>
                     {w.jobTitle}
                   </div>
@@ -73,8 +74,8 @@ export default function TwoColumn({ data }: { data: ResumeData }) {
           )}
           {projects.length > 0 && (
             <Sec title="Projects" color={accent}>
-              {projects.map((pr, i) => (
-                <div key={i} style={{ marginBottom: 10 }}>
+              {projects.map((pr) => (
+                <div key={pr.name} style={{ marginBottom: 10 }}>
                   <div style={{ fontWeight: 700, fontSize: 12 }}>{pr.name}</div>
                   <p style={{ fontSize: 11, color: "#555", lineHeight: 1.6 }}>
                     {pr.description}
@@ -93,8 +94,11 @@ export default function TwoColumn({ data }: { data: ResumeData }) {
         >
           {education.length > 0 && (
             <Sec title="Education" color={accent}>
-              {education.map((e, i) => (
-                <div key={i} style={{ marginBottom: 12 }}>
+              {education.map((e) => (
+                <div
+                  key={`${e.institution}-${e.degree}`}
+                  style={{ marginBottom: 12 }}
+                >
                   <div style={{ fontWeight: 700, fontSize: 13 }}>
                     {e.degree}
                   </div>
@@ -112,8 +116,8 @@ export default function TwoColumn({ data }: { data: ResumeData }) {
           )}
           {skills.length > 0 && (
             <Sec title="Skills" color={accent}>
-              {skills.map((sk, i) => (
-                <div key={i} style={{ marginBottom: 8 }}>
+              {skills.map((sk) => (
+                <div key={sk.name} style={{ marginBottom: 8 }}>
                   <div
                     style={{
                       display: "flex",
@@ -148,9 +152,9 @@ export default function TwoColumn({ data }: { data: ResumeData }) {
           )}
           {certifications.length > 0 && (
             <Sec title="Certifications" color={accent}>
-              {certifications.map((c, i) => (
+              {certifications.map((c) => (
                 <div
-                  key={i}
+                  key={`${c.name}-${c.organization}`}
                   style={{ fontSize: 11, color: "#475569", marginBottom: 6 }}
                 >
                   <div style={{ fontWeight: 600 }}>{c.name}</div>
@@ -163,8 +167,8 @@ export default function TwoColumn({ data }: { data: ResumeData }) {
           )}
           {languages.length > 0 && (
             <Sec title="Languages" color={accent}>
-              {languages.map((l, i) => (
-                <div key={i} style={{ fontSize: 12, marginBottom: 4 }}>
+              {languages.map((l) => (
+                <div key={l.name} style={{ fontSize: 12, marginBottom: 4 }}>
                   {l.name}{" "}
                   <span style={{ color: "#94a3b8" }}>– {l.proficiency}</span>
                 </div>

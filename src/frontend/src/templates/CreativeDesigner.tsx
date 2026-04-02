@@ -74,8 +74,8 @@ export default function CreativeDesigner({ data }: { data: ResumeData }) {
         </Sec>
         {skills.length > 0 && (
           <Sec title="Skills" light>
-            {skills.map((sk, i) => (
-              <div key={i} style={{ marginBottom: 8 }}>
+            {skills.map((sk) => (
+              <div key={sk.name} style={{ marginBottom: 8 }}>
                 <div style={{ fontSize: 11, opacity: 0.9, marginBottom: 3 }}>
                   {sk.name}
                 </div>
@@ -101,9 +101,9 @@ export default function CreativeDesigner({ data }: { data: ResumeData }) {
         )}
         {languages.length > 0 && (
           <Sec title="Languages" light>
-            {languages.map((l, i) => (
+            {languages.map((l) => (
               <div
-                key={i}
+                key={l.name}
                 style={{ fontSize: 11, opacity: 0.85, marginBottom: 4 }}
               >
                 {l.name} <span style={{ opacity: 0.6 }}>• {l.proficiency}</span>
@@ -123,9 +123,9 @@ export default function CreativeDesigner({ data }: { data: ResumeData }) {
         )}
         {workExperience.length > 0 && (
           <Sec title="Work Experience" color={purple}>
-            {workExperience.map((w, i) => (
+            {workExperience.map((w) => (
               <div
-                key={i}
+                key={`${w.jobTitle}-${w.company}`}
                 style={{
                   marginBottom: 18,
                   paddingLeft: 14,
@@ -157,8 +157,11 @@ export default function CreativeDesigner({ data }: { data: ResumeData }) {
         )}
         {education.length > 0 && (
           <Sec title="Education" color={purple}>
-            {education.map((e, i) => (
-              <div key={i} style={{ marginBottom: 12 }}>
+            {education.map((e) => (
+              <div
+                key={`${e.institution}-${e.degree}`}
+                style={{ marginBottom: 12 }}
+              >
                 <div style={{ fontWeight: 700, fontSize: 13 }}>{e.degree}</div>
                 <div style={{ fontSize: 12, color: purple }}>
                   {e.institution}
@@ -173,9 +176,9 @@ export default function CreativeDesigner({ data }: { data: ResumeData }) {
         )}
         {projects.length > 0 && (
           <Sec title="Projects" color={purple}>
-            {projects.map((pr, i) => (
+            {projects.map((pr) => (
               <div
-                key={i}
+                key={pr.name}
                 style={{
                   marginBottom: 12,
                   padding: "10px 14px",
@@ -205,9 +208,9 @@ export default function CreativeDesigner({ data }: { data: ResumeData }) {
                       marginTop: 6,
                     }}
                   >
-                    {pr.technologies.map((t, j) => (
+                    {pr.technologies.map((t) => (
                       <span
-                        key={j}
+                        key={t}
                         style={{
                           fontSize: 10,
                           background: purple,
@@ -227,9 +230,9 @@ export default function CreativeDesigner({ data }: { data: ResumeData }) {
         )}
         {certifications.length > 0 && (
           <Sec title="Certifications" color={purple}>
-            {certifications.map((c, i) => (
+            {certifications.map((c) => (
               <div
-                key={i}
+                key={`${c.name}-${c.organization}`}
                 style={{ fontSize: 12, color: "#555", marginBottom: 6 }}
               >
                 <strong style={{ color: "#222" }}>{c.name}</strong> —{" "}
@@ -263,7 +266,7 @@ function Sec({
           letterSpacing: 2,
           textTransform: "uppercase",
           color: light ? "rgba(255,255,255,0.6)" : color,
-          borderBottom: `1px solid ${light ? "rgba(255,255,255,0.2)" : color + "44"}`,
+          borderBottom: `1px solid ${light ? "rgba(255,255,255,0.2)" : `${color}44`}`,
           paddingBottom: 4,
           marginBottom: 10,
         }}

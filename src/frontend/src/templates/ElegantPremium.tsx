@@ -93,9 +93,9 @@ export default function ElegantPremium({ data }: { data: ResumeData }) {
           {workExperience.length > 0 && (
             <>
               <ESH color={rose}>Professional Experience</ESH>
-              {workExperience.map((w, i) => (
+              {workExperience.map((w) => (
                 <div
-                  key={i}
+                  key={`${w.jobTitle}-${w.company}`}
                   style={{
                     marginBottom: 20,
                     paddingLeft: 16,
@@ -132,9 +132,9 @@ export default function ElegantPremium({ data }: { data: ResumeData }) {
           {projects.length > 0 && (
             <>
               <ESH color={rose}>Featured Projects</ESH>
-              {projects.map((pr, i) => (
+              {projects.map((pr) => (
                 <div
-                  key={i}
+                  key={pr.name}
                   style={{
                     marginBottom: 14,
                     padding: "12px 16px",
@@ -162,8 +162,11 @@ export default function ElegantPremium({ data }: { data: ResumeData }) {
           {education.length > 0 && (
             <>
               <ESH color={rose}>Education</ESH>
-              {education.map((e, i) => (
-                <div key={i} style={{ marginBottom: 14 }}>
+              {education.map((e) => (
+                <div
+                  key={`${e.institution}-${e.degree}`}
+                  style={{ marginBottom: 14 }}
+                >
                   <div
                     style={{ fontSize: 13, fontWeight: 700, color: "#2C1810" }}
                   >
@@ -187,8 +190,8 @@ export default function ElegantPremium({ data }: { data: ResumeData }) {
           {skills.length > 0 && (
             <>
               <ESH color={rose}>Expertise</ESH>
-              {skills.map((sk, i) => (
-                <div key={i} style={{ marginBottom: 8 }}>
+              {skills.map((sk) => (
+                <div key={sk.name} style={{ marginBottom: 8 }}>
                   <div
                     style={{ fontSize: 11, color: "#5C3D35", marginBottom: 2 }}
                   >
@@ -217,9 +220,9 @@ export default function ElegantPremium({ data }: { data: ResumeData }) {
           {certifications.length > 0 && (
             <>
               <ESH color={rose}>Certifications</ESH>
-              {certifications.map((c, i) => (
+              {certifications.map((c) => (
                 <div
-                  key={i}
+                  key={`${c.name}-${c.organization}`}
                   style={{ fontSize: 11, color: "#5C3D35", marginBottom: 6 }}
                 >
                   <div style={{ fontWeight: 600, color: "#2C1810" }}>
@@ -233,9 +236,9 @@ export default function ElegantPremium({ data }: { data: ResumeData }) {
           {languages.length > 0 && (
             <>
               <ESH color={rose}>Languages</ESH>
-              {languages.map((l, i) => (
+              {languages.map((l) => (
                 <div
-                  key={i}
+                  key={l.name}
                   style={{
                     fontSize: 11,
                     color: "#5C3D35",

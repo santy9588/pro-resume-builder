@@ -46,16 +46,6 @@ export default function StartupTech({ data }: { data: ResumeData }) {
             <div style={{ fontSize: 28, fontWeight: 800, letterSpacing: -0.5 }}>
               {name}
             </div>
-            <div
-              style={{
-                fontSize: 13,
-                color: sky,
-                fontWeight: 700,
-                marginTop: 4,
-              }}
-            >
-              Senior Software Engineer
-            </div>
           </div>
           <div
             style={{
@@ -87,9 +77,9 @@ export default function StartupTech({ data }: { data: ResumeData }) {
         >
           {[p.email, p.phone, p.address, p.website, p.github]
             .filter(Boolean)
-            .map((v, i) => (
+            .map((v) => (
               <span
-                key={i}
+                key={v}
                 style={{
                   background: "#F1F5F9",
                   borderRadius: 6,
@@ -114,8 +104,11 @@ export default function StartupTech({ data }: { data: ResumeData }) {
           {workExperience.length > 0 && (
             <Card>
               <SH color={sky}>Experience</SH>
-              {workExperience.map((w, i) => (
-                <div key={i} style={{ marginBottom: 16 }}>
+              {workExperience.map((w) => (
+                <div
+                  key={`${w.jobTitle}-${w.company}`}
+                  style={{ marginBottom: 16 }}
+                >
                   <div style={{ fontWeight: 700, fontSize: 13 }}>
                     {w.jobTitle}
                   </div>
@@ -146,8 +139,8 @@ export default function StartupTech({ data }: { data: ResumeData }) {
           {projects.length > 0 && (
             <Card>
               <SH color={sky}>Projects</SH>
-              {projects.map((pr, i) => (
-                <div key={i} style={{ marginBottom: 12 }}>
+              {projects.map((pr) => (
+                <div key={pr.name} style={{ marginBottom: 12 }}>
                   <div style={{ fontWeight: 700, fontSize: 12 }}>{pr.name}</div>
                   {pr.technologies.length > 0 && (
                     <div
@@ -158,12 +151,12 @@ export default function StartupTech({ data }: { data: ResumeData }) {
                         margin: "4px 0",
                       }}
                     >
-                      {pr.technologies.map((t, j) => (
+                      {pr.technologies.map((t) => (
                         <span
-                          key={j}
+                          key={t}
                           style={{
                             fontSize: 9,
-                            background: sky + "18",
+                            background: `${sky}18`,
                             color: sky,
                             borderRadius: 4,
                             padding: "2px 6px",
@@ -189,8 +182,11 @@ export default function StartupTech({ data }: { data: ResumeData }) {
           {education.length > 0 && (
             <Card>
               <SH color={sky}>Education</SH>
-              {education.map((e, i) => (
-                <div key={i} style={{ marginBottom: 10 }}>
+              {education.map((e) => (
+                <div
+                  key={`${e.institution}-${e.degree}`}
+                  style={{ marginBottom: 10 }}
+                >
                   <div style={{ fontWeight: 700, fontSize: 12 }}>
                     {e.degree}
                   </div>
@@ -212,12 +208,12 @@ export default function StartupTech({ data }: { data: ResumeData }) {
             <Card>
               <SH color={sky}>Tech Stack</SH>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-                {skills.map((sk, i) => (
+                {skills.map((sk) => (
                   <span
-                    key={i}
+                    key={sk.name}
                     style={{
                       fontSize: 10,
-                      background: sky + "18",
+                      background: `${sky}18`,
                       color: sky,
                       borderRadius: 6,
                       padding: "3px 8px",
@@ -233,9 +229,9 @@ export default function StartupTech({ data }: { data: ResumeData }) {
           {languages.length > 0 && (
             <Card>
               <SH color={sky}>Languages</SH>
-              {languages.map((l, i) => (
+              {languages.map((l) => (
                 <div
-                  key={i}
+                  key={l.name}
                   style={{ fontSize: 11, color: "#475569", marginBottom: 4 }}
                 >
                   {l.name}{" "}
@@ -247,9 +243,9 @@ export default function StartupTech({ data }: { data: ResumeData }) {
           {certifications.length > 0 && (
             <Card>
               <SH color={sky}>Certifications</SH>
-              {certifications.map((c, i) => (
+              {certifications.map((c) => (
                 <div
-                  key={i}
+                  key={`${c.name}-${c.organization}`}
                   style={{ fontSize: 10, color: "#475569", marginBottom: 6 }}
                 >
                   <div style={{ fontWeight: 600 }}>{c.name}</div>

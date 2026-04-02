@@ -62,9 +62,9 @@ export default function AIMLSpecialist({ data }: { data: ResumeData }) {
         >
           {[p.website, p.linkedIn, p.github, p.address]
             .filter(Boolean)
-            .map((v, i) => (
+            .map((v) => (
               <span
-                key={i}
+                key={v ?? ""}
                 style={{
                   fontSize: 11,
                   background: "rgba(255,255,255,0.18)",
@@ -88,9 +88,9 @@ export default function AIMLSpecialist({ data }: { data: ResumeData }) {
           )}
           {workExperience.length > 0 && (
             <Sec title="Experience" color="#764BA2">
-              {workExperience.map((w, i) => (
+              {workExperience.map((w) => (
                 <div
-                  key={i}
+                  key={`${w.jobTitle}-${w.company}`}
                   style={{
                     marginBottom: 16,
                     padding: "12px 16px",
@@ -121,9 +121,9 @@ export default function AIMLSpecialist({ data }: { data: ResumeData }) {
           )}
           {projects.length > 0 && (
             <Sec title="ML Projects" color="#764BA2">
-              {projects.map((pr, i) => (
+              {projects.map((pr) => (
                 <div
-                  key={i}
+                  key={pr.name}
                   style={{
                     marginBottom: 12,
                     padding: "10px 14px",
@@ -148,9 +148,9 @@ export default function AIMLSpecialist({ data }: { data: ResumeData }) {
                         marginTop: 6,
                       }}
                     >
-                      {pr.technologies.map((t, j) => (
+                      {pr.technologies.map((t) => (
                         <span
-                          key={j}
+                          key={t}
                           style={{
                             fontSize: 9,
                             background: "#EDE9FE",
@@ -172,8 +172,11 @@ export default function AIMLSpecialist({ data }: { data: ResumeData }) {
         <div style={{ width: 210, padding: "24px 24px 24px 0" }}>
           {education.length > 0 && (
             <Sec title="Education" color="#667EEA">
-              {education.map((e, i) => (
-                <div key={i} style={{ marginBottom: 10 }}>
+              {education.map((e) => (
+                <div
+                  key={`${e.institution}-${e.degree}`}
+                  style={{ marginBottom: 10 }}
+                >
                   <div style={{ fontSize: 12, fontWeight: 700 }}>
                     {e.degree}
                   </div>
@@ -192,8 +195,8 @@ export default function AIMLSpecialist({ data }: { data: ResumeData }) {
           )}
           {skills.length > 0 && (
             <Sec title="Tech Stack" color="#667EEA">
-              {skills.map((sk, i) => (
-                <div key={i} style={{ marginBottom: 8 }}>
+              {skills.map((sk) => (
+                <div key={sk.name} style={{ marginBottom: 8 }}>
                   <div style={{ fontSize: 11, fontWeight: 600 }}>{sk.name}</div>
                   <div
                     style={{
@@ -217,9 +220,9 @@ export default function AIMLSpecialist({ data }: { data: ResumeData }) {
           )}
           {certifications.length > 0 && (
             <Sec title="Certifications" color="#667EEA">
-              {certifications.map((c, i) => (
+              {certifications.map((c) => (
                 <div
-                  key={i}
+                  key={`${c.name}-${c.organization}`}
                   style={{ fontSize: 10, color: "#555", marginBottom: 6 }}
                 >
                   <div style={{ fontWeight: 600, color: "#333" }}>{c.name}</div>
@@ -231,9 +234,9 @@ export default function AIMLSpecialist({ data }: { data: ResumeData }) {
           )}
           {languages.length > 0 && (
             <Sec title="Languages" color="#667EEA">
-              {languages.map((l, i) => (
+              {languages.map((l) => (
                 <div
-                  key={i}
+                  key={l.name}
                   style={{ fontSize: 11, color: "#555", marginBottom: 4 }}
                 >
                   {l.name}{" "}

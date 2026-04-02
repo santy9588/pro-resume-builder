@@ -51,11 +51,9 @@ export default function GraduateStudent({ data }: { data: ResumeData }) {
             marginTop: 8,
           }}
         >
-          {[p.email, p.phone, p.address, p.website]
-            .filter(Boolean)
-            .map((v, i) => (
-              <span key={i}>{v}</span>
-            ))}
+          {[p.email, p.phone, p.address, p.website].filter(Boolean).map((v) => (
+            <span key={v}>{v}</span>
+          ))}
         </div>
       </div>
       <div style={{ padding: "28px 52px" }}>
@@ -78,9 +76,9 @@ export default function GraduateStudent({ data }: { data: ResumeData }) {
         {education.length > 0 && (
           <>
             <Sec color={violet}>Education</Sec>
-            {education.map((e, i) => (
+            {education.map((e) => (
               <div
-                key={i}
+                key={`${e.institution}-${e.degree}`}
                 style={{
                   marginBottom: 14,
                   display: "flex",
@@ -120,9 +118,9 @@ export default function GraduateStudent({ data }: { data: ResumeData }) {
         {projects.length > 0 && (
           <>
             <Sec color={violet}>Research & Publications</Sec>
-            {projects.map((pr, i) => (
+            {projects.map((pr) => (
               <div
-                key={i}
+                key={pr.name}
                 style={{
                   marginBottom: 16,
                   paddingLeft: 16,
@@ -156,8 +154,11 @@ export default function GraduateStudent({ data }: { data: ResumeData }) {
         {workExperience.length > 0 && (
           <>
             <Sec color={violet}>Teaching & Research Positions</Sec>
-            {workExperience.map((w, i) => (
-              <div key={i} style={{ marginBottom: 14 }}>
+            {workExperience.map((w) => (
+              <div
+                key={`${w.jobTitle}-${w.company}`}
+                style={{ marginBottom: 14 }}
+              >
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
@@ -195,9 +196,9 @@ export default function GraduateStudent({ data }: { data: ResumeData }) {
             {certifications.length > 0 && (
               <>
                 <Sec color={violet}>Awards & Honors</Sec>
-                {certifications.map((c, i) => (
+                {certifications.map((c) => (
                   <div
-                    key={i}
+                    key={`${c.name}-${c.organization}`}
                     style={{ fontSize: 12, color: "#374151", marginBottom: 6 }}
                   >
                     {c.name} — {c.organization}, {c.date}

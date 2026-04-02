@@ -82,8 +82,11 @@ export default function ExecutiveClassic({ data }: { data: ResumeData }) {
       {workExperience.length > 0 && (
         <>
           <SH>Professional Experience</SH>
-          {workExperience.map((w, i) => (
-            <div key={i} style={{ marginBottom: 22 }}>
+          {workExperience.map((w) => (
+            <div
+              key={`${w.jobTitle}-${w.company}`}
+              style={{ marginBottom: 22 }}
+            >
               <div
                 style={{
                   display: "flex",
@@ -118,8 +121,11 @@ export default function ExecutiveClassic({ data }: { data: ResumeData }) {
       {education.length > 0 && (
         <>
           <SH>Education</SH>
-          {education.map((e, i) => (
-            <div key={i} style={{ marginBottom: 14 }}>
+          {education.map((e) => (
+            <div
+              key={`${e.institution}-${e.degree}`}
+              style={{ marginBottom: 14 }}
+            >
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div style={{ fontWeight: 700, fontSize: 13 }}>
                   {e.degree} in {e.fieldOfStudy}
@@ -141,9 +147,9 @@ export default function ExecutiveClassic({ data }: { data: ResumeData }) {
           <div style={{ flex: 1 }}>
             <SH>Core Competencies</SH>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-              {skills.map((sk, i) => (
+              {skills.map((sk) => (
                 <span
-                  key={i}
+                  key={sk.name}
                   style={{
                     fontSize: 11,
                     border: `1px solid ${gold}`,
@@ -161,9 +167,9 @@ export default function ExecutiveClassic({ data }: { data: ResumeData }) {
         {languages.length > 0 && (
           <div style={{ flex: 1 }}>
             <SH>Languages</SH>
-            {languages.map((l, i) => (
+            {languages.map((l) => (
               <div
-                key={i}
+                key={l.name}
                 style={{ fontSize: 12, color: "#555", marginBottom: 4 }}
               >
                 {l.name} — <em>{l.proficiency}</em>
@@ -175,9 +181,9 @@ export default function ExecutiveClassic({ data }: { data: ResumeData }) {
       {certifications.length > 0 && (
         <>
           <SH>Certifications &amp; Credentials</SH>
-          {certifications.map((c, i) => (
+          {certifications.map((c) => (
             <div
-              key={i}
+              key={`${c.name}-${c.organization}`}
               style={{ fontSize: 12, color: "#444", marginBottom: 6 }}
             >
               <strong>{c.name}</strong> · {c.organization} · {c.date}
@@ -188,8 +194,8 @@ export default function ExecutiveClassic({ data }: { data: ResumeData }) {
       {projects.length > 0 && (
         <>
           <SH>Notable Projects</SH>
-          {projects.map((pr, i) => (
-            <div key={i} style={{ marginBottom: 12 }}>
+          {projects.map((pr) => (
+            <div key={pr.name} style={{ marginBottom: 12 }}>
               <div style={{ fontWeight: 700, fontSize: 13 }}>{pr.name}</div>
               <p style={{ fontSize: 12, color: "#555", lineHeight: 1.7 }}>
                 {pr.description}

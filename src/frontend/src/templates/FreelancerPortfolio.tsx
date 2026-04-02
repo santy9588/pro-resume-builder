@@ -111,9 +111,9 @@ export default function FreelancerPortfolio({ data }: { data: ResumeData }) {
                 marginBottom: 20,
               }}
             >
-              {projects.map((pr, i) => (
+              {projects.map((pr) => (
                 <div
-                  key={i}
+                  key={pr.name}
                   style={{
                     background: "#fff",
                     borderRadius: 8,
@@ -136,12 +136,12 @@ export default function FreelancerPortfolio({ data }: { data: ResumeData }) {
                         margin: "6px 0",
                       }}
                     >
-                      {pr.technologies.map((t, j) => (
+                      {pr.technologies.map((t) => (
                         <span
-                          key={j}
+                          key={t}
                           style={{
                             fontSize: 9,
-                            background: amber + "22",
+                            background: `${amber}22`,
                             color: amber,
                             borderRadius: 4,
                             padding: "1px 6px",
@@ -173,8 +173,11 @@ export default function FreelancerPortfolio({ data }: { data: ResumeData }) {
             {workExperience.length > 0 && (
               <>
                 <SH color={amber}>Experience</SH>
-                {workExperience.map((w, i) => (
-                  <div key={i} style={{ marginBottom: 14 }}>
+                {workExperience.map((w) => (
+                  <div
+                    key={`${w.jobTitle}-${w.company}`}
+                    style={{ marginBottom: 14 }}
+                  >
                     <div style={{ fontWeight: 700, fontSize: 12 }}>
                       {w.jobTitle} @ {w.company}
                     </div>
@@ -204,7 +207,7 @@ export default function FreelancerPortfolio({ data }: { data: ResumeData }) {
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
                   {skills.map((sk, i) => (
                     <span
-                      key={i}
+                      key={sk.name}
                       style={{
                         fontSize: 10,
                         background:
@@ -219,7 +222,7 @@ export default function FreelancerPortfolio({ data }: { data: ResumeData }) {
                             : i % 3 === 1
                               ? amber
                               : "#1C1A0A",
-                        border: "1px solid " + amber,
+                        border: `1px solid ${amber}`,
                         borderRadius: 4,
                         padding: "2px 8px",
                       }}
@@ -235,8 +238,11 @@ export default function FreelancerPortfolio({ data }: { data: ResumeData }) {
                 <SH color={amber} style={{ marginTop: 16 }}>
                   Education
                 </SH>
-                {education.map((e, i) => (
-                  <div key={i} style={{ fontSize: 11, marginBottom: 8 }}>
+                {education.map((e) => (
+                  <div
+                    key={`${e.institution}-${e.degree}`}
+                    style={{ fontSize: 11, marginBottom: 8 }}
+                  >
                     <div style={{ fontWeight: 700 }}>{e.degree}</div>
                     <div style={{ color: amber }}>{e.institution}</div>
                     <div style={{ color: "#9CA3AF" }}>{e.endDate}</div>
@@ -247,9 +253,9 @@ export default function FreelancerPortfolio({ data }: { data: ResumeData }) {
             {languages.length > 0 && (
               <>
                 <SH color={amber}>Languages</SH>
-                {languages.map((l, i) => (
+                {languages.map((l) => (
                   <div
-                    key={i}
+                    key={l.name}
                     style={{ fontSize: 11, color: "#4B3700", marginBottom: 3 }}
                   >
                     {l.name} – {l.proficiency}

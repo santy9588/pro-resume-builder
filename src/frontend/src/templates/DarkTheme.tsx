@@ -115,9 +115,9 @@ export default function DarkTheme({ data }: { data: ResumeData }) {
           )}
           {workExperience.length > 0 && (
             <Sec title="Experience" accent={neon}>
-              {workExperience.map((w, i) => (
+              {workExperience.map((w) => (
                 <div
-                  key={i}
+                  key={`${w.jobTitle}-${w.company}`}
                   style={{
                     marginBottom: 18,
                     paddingLeft: 14,
@@ -146,9 +146,9 @@ export default function DarkTheme({ data }: { data: ResumeData }) {
           )}
           {projects.length > 0 && (
             <Sec title="Projects" accent={neon}>
-              {projects.map((pr, i) => (
+              {projects.map((pr) => (
                 <div
-                  key={i}
+                  key={pr.name}
                   style={{
                     marginBottom: 14,
                     background: "#1E293B",
@@ -168,12 +168,12 @@ export default function DarkTheme({ data }: { data: ResumeData }) {
                         margin: "4px 0",
                       }}
                     >
-                      {pr.technologies.map((t, j) => (
+                      {pr.technologies.map((t) => (
                         <span
-                          key={j}
+                          key={t}
                           style={{
                             fontSize: 9,
-                            background: teal + "22",
+                            background: `${teal}22`,
                             color: teal,
                             borderRadius: 3,
                             padding: "1px 6px",
@@ -195,8 +195,11 @@ export default function DarkTheme({ data }: { data: ResumeData }) {
         <div style={{ width: 200, padding: "28px 24px 28px 0" }}>
           {education.length > 0 && (
             <Sec title="Education" accent={teal}>
-              {education.map((e, i) => (
-                <div key={i} style={{ marginBottom: 12 }}>
+              {education.map((e) => (
+                <div
+                  key={`${e.institution}-${e.degree}`}
+                  style={{ marginBottom: 12 }}
+                >
                   <div
                     style={{ fontSize: 11, fontWeight: 700, color: "#E2E8F0" }}
                   >
@@ -214,8 +217,8 @@ export default function DarkTheme({ data }: { data: ResumeData }) {
           )}
           {skills.length > 0 && (
             <Sec title="Skills" accent={teal}>
-              {skills.map((sk, i) => (
-                <div key={i} style={{ marginBottom: 7 }}>
+              {skills.map((sk) => (
+                <div key={sk.name} style={{ marginBottom: 7 }}>
                   <div
                     style={{ fontSize: 10, color: "#CBD5E1", marginBottom: 2 }}
                   >
@@ -243,9 +246,9 @@ export default function DarkTheme({ data }: { data: ResumeData }) {
           )}
           {languages.length > 0 && (
             <Sec title="Languages" accent={teal}>
-              {languages.map((l, i) => (
+              {languages.map((l) => (
                 <div
-                  key={i}
+                  key={l.name}
                   style={{ fontSize: 11, color: dim, marginBottom: 4 }}
                 >
                   {l.name} <span style={{ color: neon }}>·</span>{" "}
@@ -256,9 +259,9 @@ export default function DarkTheme({ data }: { data: ResumeData }) {
           )}
           {certifications.length > 0 && (
             <Sec title="Certs" accent={teal}>
-              {certifications.map((c, i) => (
+              {certifications.map((c) => (
                 <div
-                  key={i}
+                  key={`${c.name}-${c.organization}`}
                   style={{ fontSize: 10, color: dim, marginBottom: 6 }}
                 >
                   <div style={{ color: "#CBD5E1", fontWeight: 600 }}>

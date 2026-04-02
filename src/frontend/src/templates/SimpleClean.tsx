@@ -60,8 +60,11 @@ export default function SimpleClean({ data }: { data: ResumeData }) {
       {workExperience.length > 0 && (
         <>
           <SH>Experience</SH>
-          {workExperience.map((w, i) => (
-            <div key={i} style={{ marginBottom: 14 }}>
+          {workExperience.map((w) => (
+            <div
+              key={`${w.jobTitle}-${w.company}`}
+              style={{ marginBottom: 14 }}
+            >
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div style={{ fontWeight: 700, fontSize: 13 }}>
                   {w.jobTitle} — {w.company}
@@ -83,9 +86,9 @@ export default function SimpleClean({ data }: { data: ResumeData }) {
       {education.length > 0 && (
         <>
           <SH>Education</SH>
-          {education.map((e, i) => (
+          {education.map((e) => (
             <div
-              key={i}
+              key={`${e.institution}-${e.degree}`}
               style={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -119,8 +122,8 @@ export default function SimpleClean({ data }: { data: ResumeData }) {
       {projects.length > 0 && (
         <>
           <SH>Projects</SH>
-          {projects.map((pr, i) => (
-            <div key={i} style={{ marginBottom: 10 }}>
+          {projects.map((pr) => (
+            <div key={pr.name} style={{ marginBottom: 10 }}>
               <div style={{ fontWeight: 700, fontSize: 12 }}>{pr.name}</div>
               <p style={{ fontSize: 12, color: "#333", lineHeight: 1.7 }}>
                 {pr.description}
@@ -132,8 +135,11 @@ export default function SimpleClean({ data }: { data: ResumeData }) {
       {certifications.length > 0 && (
         <>
           <SH>Certifications</SH>
-          {certifications.map((c, i) => (
-            <div key={i} style={{ fontSize: 12, marginBottom: 4 }}>
+          {certifications.map((c) => (
+            <div
+              key={`${c.name}-${c.organization}`}
+              style={{ fontSize: 12, marginBottom: 4 }}
+            >
               {c.name} — {c.organization}, {c.date}
             </div>
           ))}

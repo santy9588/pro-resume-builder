@@ -199,12 +199,12 @@ export default function Landing() {
                 desc: "Your resume data is securely saved on the blockchain. Access it anywhere, anytime.",
                 color: "text-teal-500",
               },
-            ].map((f, i) => (
+            ].map((f) => (
               <motion.div
-                key={i}
+                key={f.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: 0.1 }}
                 viewport={{ once: true }}
                 className="bg-white rounded-xl p-6 border border-border shadow-xs hover:shadow-sm transition-shadow"
               >
@@ -220,8 +220,6 @@ export default function Landing() {
           </div>
         </div>
       </section>
-
-      {/* CTA */}
       <section className="py-20 bg-primary" id="about" data-ocid="cta.section">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">

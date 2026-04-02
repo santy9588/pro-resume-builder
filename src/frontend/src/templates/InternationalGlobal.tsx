@@ -71,8 +71,11 @@ export default function InternationalGlobal({ data }: { data: ResumeData }) {
           )}
           {workExperience.length > 0 && (
             <Sec title="International Experience" color={green}>
-              {workExperience.map((w, i) => (
-                <div key={i} style={{ marginBottom: 16 }}>
+              {workExperience.map((w) => (
+                <div
+                  key={`${w.jobTitle}-${w.company}`}
+                  style={{ marginBottom: 16 }}
+                >
                   <div style={{ fontWeight: 700, fontSize: 13 }}>
                     {w.jobTitle}
                   </div>
@@ -95,8 +98,8 @@ export default function InternationalGlobal({ data }: { data: ResumeData }) {
           )}
           {projects.length > 0 && (
             <Sec title="Global Projects" color={green}>
-              {projects.map((pr, i) => (
-                <div key={i} style={{ marginBottom: 10 }}>
+              {projects.map((pr) => (
+                <div key={pr.name} style={{ marginBottom: 10 }}>
                   <div style={{ fontWeight: 700, fontSize: 12 }}>{pr.name}</div>
                   <p
                     style={{ fontSize: 11, color: "#4B5563", lineHeight: 1.6 }}
@@ -111,9 +114,9 @@ export default function InternationalGlobal({ data }: { data: ResumeData }) {
         <div style={{ width: 220, background: light, padding: "24px 20px" }}>
           {languages.length > 0 && (
             <Sec title="🗣 Languages" color={green}>
-              {languages.map((l, i) => (
+              {languages.map((l) => (
                 <div
-                  key={i}
+                  key={l.name}
                   style={{
                     marginBottom: 10,
                     padding: "6px 10px",
@@ -134,8 +137,11 @@ export default function InternationalGlobal({ data }: { data: ResumeData }) {
           )}
           {education.length > 0 && (
             <Sec title="Education" color={green}>
-              {education.map((e, i) => (
-                <div key={i} style={{ marginBottom: 10 }}>
+              {education.map((e) => (
+                <div
+                  key={`${e.institution}-${e.degree}`}
+                  style={{ marginBottom: 10 }}
+                >
                   <div style={{ fontSize: 12, fontWeight: 700 }}>
                     {e.degree}
                   </div>
@@ -151,9 +157,9 @@ export default function InternationalGlobal({ data }: { data: ResumeData }) {
           )}
           {skills.length > 0 && (
             <Sec title="Skills" color={green}>
-              {skills.map((sk, i) => (
+              {skills.map((sk) => (
                 <div
-                  key={i}
+                  key={sk.name}
                   style={{
                     fontSize: 11,
                     marginBottom: 5,
@@ -171,9 +177,9 @@ export default function InternationalGlobal({ data }: { data: ResumeData }) {
           )}
           {certifications.length > 0 && (
             <Sec title="Certifications" color={green}>
-              {certifications.map((c, i) => (
+              {certifications.map((c) => (
                 <div
-                  key={i}
+                  key={`${c.name}-${c.organization}`}
                   style={{ fontSize: 10, color: "#4B5563", marginBottom: 6 }}
                 >
                   <div style={{ fontWeight: 600 }}>{c.name}</div>

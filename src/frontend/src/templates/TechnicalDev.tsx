@@ -34,9 +34,6 @@ export default function TechnicalDev({ data }: { data: ResumeData }) {
           padding: "32px 36px",
         }}
       >
-        <div style={{ color: "#6B7280", fontSize: 11, marginBottom: 4 }}>
-          // Senior Software Engineer
-        </div>
         <div
           style={{
             fontSize: 28,
@@ -101,9 +98,9 @@ export default function TechnicalDev({ data }: { data: ResumeData }) {
           {workExperience.length > 0 && (
             <>
               <SH color={cyan}>&gt; experience()</SH>
-              {workExperience.map((w, i) => (
+              {workExperience.map((w) => (
                 <div
-                  key={i}
+                  key={`${w.jobTitle}-${w.company}`}
                   style={{
                     marginBottom: 16,
                     background: dark,
@@ -117,12 +114,14 @@ export default function TechnicalDev({ data }: { data: ResumeData }) {
                     {w.jobTitle}
                   </div>
                   <div style={{ fontSize: 11, color: cyan, marginBottom: 2 }}>
-                    {w.company} // {w.location}
+                    {w.company} {" // "} {w.location}
                   </div>
                   <div
                     style={{ fontSize: 10, color: "#6B7280", marginBottom: 6 }}
                   >
-                    /* {w.startDate} - {w.endDate} */
+                    {"/* "}
+                    {w.startDate} - {w.endDate}
+                    {" */"}
                   </div>
                   <p
                     style={{ fontSize: 11, color: "#9CA3AF", lineHeight: 1.7 }}
@@ -136,9 +135,9 @@ export default function TechnicalDev({ data }: { data: ResumeData }) {
           {projects.length > 0 && (
             <>
               <SH color={cyan}>&gt; projects()</SH>
-              {projects.map((pr, i) => (
+              {projects.map((pr) => (
                 <div
-                  key={i}
+                  key={pr.name}
                   style={{
                     marginBottom: 14,
                     background: dark,
@@ -160,12 +159,12 @@ export default function TechnicalDev({ data }: { data: ResumeData }) {
                         margin: "4px 0",
                       }}
                     >
-                      {pr.technologies.map((t, j) => (
+                      {pr.technologies.map((t) => (
                         <span
-                          key={j}
+                          key={t}
                           style={{
                             fontSize: 9,
-                            background: cyan + "22",
+                            background: `${cyan}22`,
                             color: cyan,
                             padding: "1px 6px",
                             borderRadius: 3,
@@ -190,8 +189,8 @@ export default function TechnicalDev({ data }: { data: ResumeData }) {
           {skills.length > 0 && (
             <>
               <SH color={"#86EFAC"}>skills[]</SH>
-              {skills.map((sk, i) => (
-                <div key={i} style={{ marginBottom: 8 }}>
+              {skills.map((sk) => (
+                <div key={sk.name} style={{ marginBottom: 8 }}>
                   <div
                     style={{ fontSize: 10, color: "#D1D5DB", marginBottom: 2 }}
                   >
@@ -220,9 +219,9 @@ export default function TechnicalDev({ data }: { data: ResumeData }) {
           {education.length > 0 && (
             <>
               <SH color={"#FDE68A"}>edu()</SH>
-              {education.map((e, i) => (
+              {education.map((e) => (
                 <div
-                  key={i}
+                  key={`${e.institution}-${e.degree}`}
                   style={{
                     marginBottom: 10,
                     background: dark,
@@ -248,9 +247,9 @@ export default function TechnicalDev({ data }: { data: ResumeData }) {
           {languages.length > 0 && (
             <>
               <SH color={"#C084FC"}>lang[]</SH>
-              {languages.map((l, i) => (
+              {languages.map((l) => (
                 <div
-                  key={i}
+                  key={l.name}
                   style={{ fontSize: 10, color: "#9CA3AF", marginBottom: 4 }}
                 >
                   '{l.name}': '{l.proficiency}'
@@ -261,9 +260,9 @@ export default function TechnicalDev({ data }: { data: ResumeData }) {
           {certifications.length > 0 && (
             <>
               <SH color={"#FCA5A5"}>certs[]</SH>
-              {certifications.map((c, i) => (
+              {certifications.map((c) => (
                 <div
-                  key={i}
+                  key={`${c.name}-${c.organization}`}
                   style={{ fontSize: 10, color: "#9CA3AF", marginBottom: 6 }}
                 >
                   <div style={{ color: "#F9FAFB" }}>{c.name}</div>
